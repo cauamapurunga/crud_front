@@ -7,9 +7,10 @@ const updateProductForm = document.querySelector('#update-product-form');
 const addForm = document.querySelector('#add-form');
 const updateForm = document.querySelector('#update-form');
 
+const API_URL = "54.224.193.230";
 // Função para carregar os produtos
 async function fetchProducts() {
-  const response = await fetch('http://localhost:3000/products');
+  const response = await fetch(`${API_URL}:3000/products`);
   const products = await response.json();
   
   // Limpar a lista de produtos
@@ -44,7 +45,7 @@ addForm.addEventListener('submit', async (e) => {
   const description = document.querySelector('#description').value;
   const price = document.querySelector('#price').value;
 
-  await fetch('http://localhost:3000/products', {
+  await fetch(`${API_URL}:3000/products`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, description, price })
@@ -56,7 +57,7 @@ addForm.addEventListener('submit', async (e) => {
 
 // Função para exibir o formulário de editar produto
 async function editProduct(id) {
-  const response = await fetch(`http://localhost:3000/products/${id}`);
+  const response = await fetch(`${API_URL}:3000/products/${id}`);
   const product = await response.json();
   
   document.querySelector('#update-id').value = product.id;
@@ -77,7 +78,7 @@ updateForm.addEventListener('submit', async (e) => {
   const description = document.querySelector('#update-description').value;
   const price = document.querySelector('#update-price').value;
 
-  await fetch(`http://localhost:3000/products/${id}`, {
+  await fetch(`${API_URL}:3000/products${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, description, price })
@@ -89,7 +90,7 @@ updateForm.addEventListener('submit', async (e) => {
 
 // Função para excluir um produto
 async function deleteProduct(id) {
-  await fetch(`http://localhost:3000/products/${id}`, {
+  await fetch(`${API_URL}:3000/products${id}`, {
     method: 'DELETE',
   });
 
