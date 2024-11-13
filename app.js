@@ -7,7 +7,7 @@ const updateProductForm = document.querySelector('#update-product-form');
 const addForm = document.querySelector('#add-form');
 const updateForm = document.querySelector('#update-form');
 
-const API_URL = "54.224.193.230";
+const API_URL = "34.228.187.44";
 // Função para carregar os produtos
 async function fetchProducts() {
   const response = await fetch(`${API_URL}:3000/products`);
